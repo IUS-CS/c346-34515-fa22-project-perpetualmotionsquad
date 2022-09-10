@@ -427,3 +427,40 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,nextjs,react,dotnetcore,aspnetcore,visualstudiocode
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+client/node_modules
+client/.pnp
+.pnp.js
+
+# testing
+client/coverage
+
+# next.js
+client/.next/
+client/out/
+
+# production
+client/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
