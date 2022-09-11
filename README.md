@@ -1,7 +1,7 @@
-# Application Name
+# DestiNation
 
 ## Description
- This project aims to help the user view their up and coming flight and see relevant data based on their flight. This project also helps the user plan what they will do when they arrive at their destination.
+ DestiNation aims to help the user view their up and coming flight and see relevant data based on their flight. This project also helps the user plan what they will do when they arrive at their destination.
 
 # How to build
 ## Dependencies To Build and Run Application
