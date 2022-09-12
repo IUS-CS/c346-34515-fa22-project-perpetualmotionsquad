@@ -13,7 +13,7 @@ Go to the project directory and then move into the client directory. This is whe
 ```console
 cd client
 ```
-Then run npm install to install project dependencies
+Then run npm install to install project dependencies.
 ```console
 npm install
 ```
