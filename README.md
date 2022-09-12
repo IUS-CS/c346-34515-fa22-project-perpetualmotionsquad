@@ -13,6 +13,11 @@ Go to the project directory and then move into the client directory. This is whe
 ```console
 cd client
 ```
+Then run npm install to install project dependencies
+```console
+npm install
+```
+
 How To Run Application In Dev Mode
 ```console
 npm run dev
