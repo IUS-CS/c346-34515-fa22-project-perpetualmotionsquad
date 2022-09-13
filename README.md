@@ -18,15 +18,15 @@ Then run npm install to install project dependencies.
 npm install
 ```
 
-How To Run Application In Dev Mode
+How To Run Application In Dev Mode.
 ```console
 npm run dev
 ```
-How To Build Application For Production
+How To Build Application For Production.
 ```console
 npm run build 
 ```
-How To Run Production Server After Building
+How To Run Production Server After Building.
 ```console
 npm run start
 ```
@@ -36,11 +36,14 @@ Go to the project directory and then move into the src directory. This is where 
 ```console
 cd backend/src
 ```
-How To Build Project
+How To Build Project.
 ```console
 dotnet build
 ```
-How To Run Project
+How To Run Project.
 ```console
 dotnet run
 ```
+
+##License 
+[MIT](https://choosealicense.com/licenses/mit/))
