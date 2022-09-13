@@ -1,4 +1,4 @@
-# Organization
+# C346 - PerpetualMotionSquad
 
 Front end - Sebastian Burman, Brad Robinson, Xiaokun Li
 Back end - Sebastian Burman, Brad Robinson, Xiaokun Li
