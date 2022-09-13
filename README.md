@@ -41,7 +41,7 @@ How To Build Project.
 dotnet build
 ```
 How To Run Project.
-```console
+```
 dotnet run
 ```
 
