@@ -21,8 +21,8 @@ retrospective)
 * Decide project fast
 * Got project skeleton
 ### Bad
-* Only Sebstain knows all the technologies we are using
-* Not too good with with dragging tasks on github
+* Only Sebastain knows all the technologies we are using
+* Not too good with dragging tasks on github
 ### Actionable Commitments
 * As a team, more meetings to check in 
 * Be more cautious with github tasks
