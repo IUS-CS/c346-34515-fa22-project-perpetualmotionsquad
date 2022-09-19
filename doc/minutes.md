@@ -12,7 +12,7 @@ This sprint, we completed:
 * Create doc files
 * Set up skeleton for the project
 Here are screenshots of what we did:
-![Thing](/docs/images/screenshot1.png?raw=true)
+![Thing](/doc/images/screenshot1.png?raw=true)
 ## Retro
 [What is a Sprint Retrospective](https://www.scrum.org/resources/what-is-a-sprint-
 retrospective)
