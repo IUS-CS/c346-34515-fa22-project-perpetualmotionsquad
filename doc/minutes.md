@@ -14,8 +14,7 @@ This sprint, we completed:
 Here are screenshots of what we did:
 ![Thing](/doc/images/screenshot1.png?raw=true)
 ## Retro
-[What is a Sprint Retrospective](https://www.scrum.org/resources/what-is-a-sprint-
-retrospective)
+[What is a Sprint Retrospective](https://www.scrum.org/resources/what-is-a-sprint-retrospective)
 ### Good
 * Communication
 * Decide project fast
@@ -36,3 +35,4 @@ Points | Story
 5      | As a user, I want to put in my departure airport, arrival, and/or date to get a list of flights 
 5      | As a user, I want to put in my flight number and look up information on my flight.
 3      | As a user, I want to be able to view the home page on my phone.
+1      | As a user, I want a visually pleasing homepage 
