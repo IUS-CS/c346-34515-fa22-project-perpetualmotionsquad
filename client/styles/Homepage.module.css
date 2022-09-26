@@ -79,6 +79,20 @@
   border: none;
 }
 
+.header {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  padding-right: 20px;
+  height: 50px;
+}
+
+.marginRemove {
+  margin: 0px;
+}
+
 /*Responsiveness*/
 
 /*Switch to scrollable page*/
