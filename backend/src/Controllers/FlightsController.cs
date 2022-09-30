@@ -13,7 +13,7 @@ public class FlightsController : ControllerBase
     [HttpGet("flightnumber")]
     public async Task<ActionResult<Flight>> GetFlight(string? flightnumber)
     {
-        var flight = await service.CallingApiFlight(flightnumber);
+        var flight = await service.GetFlightFromFlightNumber(flightnumber);
         return flight;
     }
 

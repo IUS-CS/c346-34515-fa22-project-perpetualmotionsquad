@@ -6,7 +6,7 @@ namespace Services.FlightService;
 public class FlightService
 {
     HttpClient client = new HttpClient();
-    public async Task<Flight> CallingApiFlight(string s)
+    public async Task<Flight> GetFlightFromFlightNumber(string s)
     {
         client.DefaultRequestHeaders.Add("X-RapidAPI-Key","APIKEY");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
