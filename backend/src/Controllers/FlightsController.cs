@@ -11,9 +11,9 @@ public class FlightsController : ControllerBase
 
     // GET: Flights/flightnumer?flightnumber=1234
     [HttpGet("flightnumber")]
-    public async Task<ActionResult<Flight>> GetFlight(string? flightnumber)
+    public async Task<ActionResult<Flight>> GetFlight(string? flightNumber)
     {
-        var flight = await service.GetFlightFromFlightNumber(flightnumber);
+        var flight = await service.GetFlightFromFlightNumber(flightNumber);
         return flight;
     }
 
