@@ -1,10 +1,7 @@
 namespace FlightApi.Models;
 using System.Text.Json.Serialization;
-using System.ComponentModel.DataAnnotations.Schema;
 public class Airport
 {
-
-    
     [JsonPropertyName("icao")]
     public string? Icao { get; set; }
 
@@ -13,8 +10,6 @@ public class Airport
 
     [JsonPropertyName("name")]
     public string? Name {get; set;}
-
-   
 
     [JsonPropertyName("shortName")]
     public string? ShortName{get; set;}
