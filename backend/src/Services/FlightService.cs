@@ -6,15 +6,14 @@ namespace Services.FlightService;
 public class FlightService
 {
     HttpClient client = new HttpClient();
-    public async Task<Flight> GetFlightFromFlightNumber(string flightNumber, string date)
+    public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
     {
-        client.DefaultRequestHeaders.Add("X-RapidAPI-Key","APIKEY");
+        client.DefaultRequestHeaders.Add("X-RapidAPI-Key","api key");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         var streamTask = client.GetStreamAsync($"https://aerodatabox.p.rapidapi.com/flights/number/{flightNumber}/{date}?withAircraftImage=true&withLocation=true");
-        var flight = await JsonSerializer.DeserializeAsync<List<Flight>>(await streamTask);
-        return flight[0];
+        var listOfflights = await JsonSerializer.DeserializeAsync<List<Flight>>(await streamTask);
+        return listOfflights;
     }
 }
