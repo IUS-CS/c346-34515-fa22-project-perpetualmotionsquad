@@ -11,7 +11,9 @@ public class FlightsController : ControllerBase
 
     // GET: Flights/flightnumer?flightnumber=1234&date=2022-09-30
     [HttpGet("flightnumber")]
-    public async Task<ActionResult<Flight>> GetFlight(string? flightNumber, string date)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<List<Flight>>> GetFlight(string flightNumber, string date)
     {
         var flight = await service.GetFlightFromFlightNumber(flightNumber, date);
         return flight;
