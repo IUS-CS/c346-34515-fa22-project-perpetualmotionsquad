@@ -14,7 +14,7 @@ public class FlightService:IFlightService
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         var streamTask = client.GetStreamAsync($"https://aerodatabox.p.rapidapi.com/flights/number/{flightNumber}/{date}?withAircraftImage=true&withLocation=true");
-        var listOfflights = await JsonSerializer.DeserializeAsync<List<Flight>>(await streamTask);
-        return listOfflights;
+        var listOfFlights = await JsonSerializer.DeserializeAsync<List<Flight>>(await streamTask);
+        return listOfFlights;
     }
 }
