@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-
+using Interfaces.FlightService;
+using Services.FlightService;
 using FlightApi.Models;
 
 
@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IFlightService, FlightService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 // builder.Services.AddEndpointsApiExplorer();
