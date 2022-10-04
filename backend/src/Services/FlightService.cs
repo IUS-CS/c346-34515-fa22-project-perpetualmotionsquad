@@ -25,15 +25,10 @@ public class FlightService:IFlightService
 
     public async Task<Flights> GetAllArrivalFlights(string toLocal, string fromLocal, string icao)
     {
-        // Does not work 
-        JsonSerializerOptions options = new()
-        {
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
 
         var streamTask = client.GetStreamAsync
             ($"https://aerodatabox.p.rapidapi.com/flights/airports/icao/{icao}/{fromLocal}/{toLocal}?withLeg=true&direction=Both&withCancelled=true&withCodeshared=true&withCargo=false&withPrivate=false&withLocation=true");
-        var listOfFlights = await JsonSerializer.DeserializeAsync<Flights>(await streamTask, options);
+        var listOfFlights = await JsonSerializer.DeserializeAsync<Flights>(await streamTask);
         return listOfFlights;
     }
 }
