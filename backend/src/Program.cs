@@ -1,7 +1,5 @@
 using Interfaces.FlightService;
-using Interfaces.ArrivalFlightsService;
 using Services.FlightService;
-using Services.ArrivalFlightsService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IFlightService, FlightService>();
-builder.Services.AddScoped<IArrivalFlightsService, ArrivalFlightsService>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
