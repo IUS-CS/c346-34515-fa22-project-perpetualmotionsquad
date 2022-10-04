@@ -9,6 +9,7 @@ public class FlightService:IFlightService
     HttpClient client = new HttpClient();
     public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
     {
+
         client.DefaultRequestHeaders.Add("X-RapidAPI-Key","");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();

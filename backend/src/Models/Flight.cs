@@ -1,6 +1,6 @@
 namespace FlightApi.Models;
 using System.Text.Json.Serialization;
-
+using System.ComponentModel.DataAnnotations;
 public class Flight
 {
     [JsonPropertyName("greatCircleDistance")]
@@ -16,6 +16,7 @@ public class Flight
     public string LastUpdatedUtc { get; set; }
 
     [JsonPropertyName("number")]
+    [RegularExpression(@"^([A-Z]{2}|[A-Z]\d|\d[A-Z])[1-9](\d{1,3})?$")]
     public string Number { get; set; }
 
     [JsonPropertyName("callSign")]
