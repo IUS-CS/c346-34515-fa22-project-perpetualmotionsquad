@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FlightApi.Models;
 using Interfaces.FlightService;
+using System.Text.RegularExpressions;
 
 
 [Route("[controller]")]
@@ -15,10 +16,19 @@ public class FlightsController : ControllerBase
 
     // GET: Flights/flightnumer?flightnumber=1234&date=2022-09-30
     [HttpGet("flightnumber")]
-    public async Task<ActionResult<List<Flight>>> GetFlight(string? flightNumber, string date)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Flight>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<List<Flight>>> GetFlight(string flightNumber, string date)
     {
-        var flight = await flightService.GetFlightFromFlightNumber(flightNumber, date);
-        return flight;
-    }
 
+        string pattern = @"^([A-Z]{2}|[A-Z]\d|\d[A-Z])[1-9](\d{1,3})?$";
+
+        if (!Regex.IsMatch(flightNumber, pattern, RegexOptions.IgnoreCase))
+            return BadRequest();
+
+        var flight = await flightService.GetFlightFromFlightNumber(flightNumber, date);
+
+        return Ok(flight);
+    }
 }

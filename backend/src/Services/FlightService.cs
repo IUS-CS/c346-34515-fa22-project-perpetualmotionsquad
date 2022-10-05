@@ -10,6 +10,7 @@ public class FlightService:IFlightService
     HttpClient client = new HttpClient();
     public FlightService()
     {
+
         client.DefaultRequestHeaders.Add("X-RapidAPI-Key","");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();

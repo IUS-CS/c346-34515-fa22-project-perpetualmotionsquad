@@ -1,6 +1,6 @@
 namespace FlightApi.Models;
 using System.Text.Json.Serialization;
-
+using System.ComponentModel.DataAnnotations;
 public class Flight
 {
     [JsonPropertyName("greatCircleDistance")]
