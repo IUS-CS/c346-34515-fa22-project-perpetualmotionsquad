@@ -3,14 +3,14 @@ using System.Text.Json.Serialization;
  public class Aircraft
 {
     [JsonPropertyName("reg")]
-    public string Reg { get; set; }
+    public string? Reg { get; set; }
 
     [JsonPropertyName("modeS")]
-    public string ModeS { get; set; }
+    public string? ModeS { get; set; }
     
     [JsonPropertyName("model")]
-    public string Model { get; set; }
+    public string? Model { get; set; }
 
     [JsonPropertyName("image")]
-    public Image Image { get; set; }
+    public Image? Image { get; set; }
 }

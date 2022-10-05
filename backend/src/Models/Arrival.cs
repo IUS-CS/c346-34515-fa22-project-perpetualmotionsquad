@@ -3,26 +3,27 @@
 public class Arrival
 {
     [JsonPropertyName("airport")]
-    public Airport Airport { get; set; }
+    public Airport? Airport { get; set; }
 
     [JsonPropertyName("scheduledTimeLocal")]
-    public string ScheduledTimeLocal { get; set; }
+    public string? ScheduledTimeLocal { get; set; }
 
     [JsonPropertyName("actualTimeLocal")]
-    public string ActualTimeLocal { get; set; }
+    public string? ActualTimeLocal { get; set; }
 
     [JsonPropertyName("runwayTimeLocal")]
-    public string RunwayTimeLocal { get; set; }
+    public string? RunwayTimeLocal { get; set; }
 
     [JsonPropertyName("scheduledTimeUtc")]
-    public string ScheduledTimeUtc { get; set; }
+    public string? ScheduledTimeUtc { get; set; }
 
     [JsonPropertyName("actualTimeUtc")]
-    public string ActualTimeUtc { get; set; }
+    public string? ActualTimeUtc { get; set; }
 
     [JsonPropertyName("runwayTimeUtc")]
-    public string RunwayTimeUtc { get; set; }
+    public string? RunwayTimeUtc { get; set; }
 
     [JsonPropertyName("quality")]
-    public List<string> Quality { get; set; }
+    public List<string>? Quality { get; set; }
+
 }
