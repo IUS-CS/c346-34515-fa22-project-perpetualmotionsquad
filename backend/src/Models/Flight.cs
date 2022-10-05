@@ -4,37 +4,36 @@ using System.ComponentModel.DataAnnotations;
 public class Flight
 {
     [JsonPropertyName("greatCircleDistance")]
-    public GreatCircleDistance GreatCircleDistance { get; set; }
+    public GreatCircleDistance? GreatCircleDistance { get; set; }
 
     [JsonPropertyName("departure")]
-    public Departure Departure { get; set; }
+    public Departure? Departure { get; set; }
 
     [JsonPropertyName("arrival")]
-    public Arrival Arrival { get; set; }
+    public Arrival? Arrival { get; set; }
 
     [JsonPropertyName("lastUpdateUtc")]
-    public string LastUpdatedUtc { get; set; }
+    public string? LastUpdatedUtc { get; set; }
 
     [JsonPropertyName("number")]
-    [RegularExpression(@"^([A-Z]{2}|[A-Z]\d|\d[A-Z])[1-9](\d{1,3})?$")]
-    public string Number { get; set; }
+    public string? Number { get; set; }
 
     [JsonPropertyName("callSign")]
-    public string CallSign { get; set; }
+    public string? CallSign { get; set; }
 
     [JsonPropertyName("status")]
-    public string Status { get; set; }
+    public string? Status { get; set; }
 
     [JsonPropertyName("codeshareStatus")]
-    public string CodeshareStatus { get; set; }
+    public string? CodeshareStatus { get; set; }
 
     [JsonPropertyName("isCargo")]
-    public bool IsCargo { get; set; }
+    public bool? IsCargo { get; set; }
 
     [JsonPropertyName("aircraft")]
-    public Aircraft Aircraft { get; set; }
+    public Aircraft? Aircraft { get; set; }
 
     [JsonPropertyName("airline")]
-    public Airline Airline { get; set; }
+    public Airline? Airline { get; set; }
 }
 
