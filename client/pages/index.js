@@ -9,9 +9,6 @@ export default function Home() {
   //State
   const [DepartureAirportInput, SetDepartureAirportInput] = useState("")
   const [ArrivalAirportInput, SetArrivalAirportInput] = useState("")
-  const [DateInput, SetDateInput] = useState("")
-  const [DepartureArrivalDateInputDisabled, SetDepartureArrivalDateInputDisabled] = useState(false)
-  const [FlightNumberDisabled, SetFlightNumberDisabled] = useState(false)
   const [FlightNumberInput, SetFlightNumberInput] = useState("")
 
   //Dropdown Input Options
@@ -23,24 +20,17 @@ export default function Home() {
   const customStyles = {
     control: base => ({
       ...base,
-      height: 50,
+      height: 36,
       fontSize: 20,
-      opacity: DepartureArrivalDateInputDisabled ? .3 : 1,
-    })
+    }),
+    placeholder: (defaultStyles) => {
+      return {
+          ...defaultStyles,
+          color: 'black',
+      }
+  }
   }
 
-  function OnChangeFlightNumberInputCallback() {
-    SetFlightNumberDisabled(false)
-    SetDepartureArrivalDateInputDisabled(true)
-    SetDepartureAirportInput("")
-    SetArrivalAirportInput("")
-    SetDateInput("")
-  }
-  function OnChangeArrivalDepartureDateInputCallback() {
-    SetDepartureArrivalDateInputDisabled(false)
-    SetFlightNumberDisabled(true)
-    SetFlightNumberInput("")
-  }
   return (
     <div className={styles.container}>
       <Head>
@@ -61,25 +51,40 @@ export default function Home() {
           <img className={styles.homeimage} src='./Svgs/airplane.png'></img>
         </div>
         <div className={styles.rightcontainer}>
-          <form className={styles.formcontainer}>
-            <div className={styles.labelinputcontainer}>
-              <label className={styles.formlabels}>Departure Airport</label>
-              <Select instanceId="DepartureAirportInput" options={options} styles={customStyles} onChange={(event) => SetDepartureAirportInput(event ? event.value : "", OnChangeArrivalDepartureDateInputCallback())} value={options.find(item => item.value === DepartureAirportInput)} />
-            </div>
-            <div className={styles.labelinputcontainer}>
-              <label className={styles.formlabels}>Arrival Airport</label>
-              <Select instanceId="ArrivalAirportInput" options={options} styles={customStyles} onChange={(event) => SetArrivalAirportInput(event ? event.value : "", OnChangeArrivalDepartureDateInputCallback())} value={options.find(item => item.value === ArrivalAirportInput)} />
-            </div>
-            <div className={styles.labelinputcontainer}>
-              <label className={styles.formlabels}>Date</label>
-              <input type="date" className={styles.forminputs} style={{ opacity: DepartureArrivalDateInputDisabled ? .3 : 1 }} onChange={(event) => SetDateInput(event.target.value, OnChangeArrivalDepartureDateInputCallback())} value={DateInput}></input>
-            </div>
-            <div className={styles.labelinputcontainer}>
-              <label className={styles.formlabels}>Flight Number</label>
-              <input type="input" className={styles.forminputs} style={{ opacity: FlightNumberDisabled ? .3 : 1 }} onChange={(event) => SetFlightNumberInput(event.target.value, OnChangeFlightNumberInputCallback())} value={FlightNumberInput} maxLength={6} placeholder="Ex-DL9367"></input>
-            </div>
-            <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
-          </form>
+          <div className={styles.formcontainer}>
+            <form className={styles.flightSearchCon}>
+            <h2 className={styles.formInputHeaders}>Search For Flights</h2>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>Arrival Airport</label>
+                <Select instanceId="ArrivalAirportInput" options={options} styles={customStyles} onChange={(event) => SetArrivalAirportInput(event ? event.value : "")} value={options.find(item => item.value === ArrivalAirportInput)} />
+              </div>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>From Local</label>
+                <input type="time"required className={styles.forminputs}></input>
+              </div>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>To Local</label>
+                <input type="time"required className={styles.forminputs}></input>
+              </div>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>Date</label>
+                <input type="date" className={styles.forminputs} required ></input>
+              </div>
+              <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
+            </form>
+            <form className={styles.flightNumberSearchCon}>
+              <h2 className={styles.formInputHeaders}>Search By Flight Number</h2>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>Flight Number</label>
+                <input type="input" className={styles.forminputs} onChange={(event) => SetFlightNumberInput(event.target.value)} value={FlightNumberInput} maxLength={6} placeholder="Ex-DL9367"></input>
+              </div>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>Date</label>
+                <input type="date" className={styles.forminputs}></input>
+              </div>
+              <input className={styles.formSubmit} type="submit" value="Find Flight"></input>
+            </form>
+          </div>
         </div>
       </main>
     </div>
