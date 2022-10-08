@@ -37,7 +37,8 @@
 }
 
 .formcontainer {
-  height: 650px;
+  height: 90%;
+  max-height: 1000px;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -52,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 51%;
+  height: 57%;
   width: 100%;
   border-radius: 7px;
   background-color: rgba(86, 177, 242, 0.835);
@@ -68,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 44%;
+  height: 38%;
   width: 100%;
   border-radius: 7px;
   background-color: rgba(86, 177, 242, 0.835);
@@ -144,14 +145,27 @@
 
   .formcontainer {
     margin-bottom: 20px;
+    height: 800px;
   }
 }
 
-/*Shrink header to fit 400px*/
-@media only screen and (max-width: 400px) {
+/*When view gets 800px or below make from container a fixed 700px*/
+@media only screen and (max-height: 800px) {
+  .formcontainer {
+    height: 700px;
+  }
+}
+
+/*When view gets 1000px or more make form text headers larger*/
+@media only screen and (min-height: 1000px) {
+  .formInputHeaders{
+    font-size: 1.7rem;
+  }
+}
+/*Shrink homepage title for mobile*/
+@media only screen and (max-width: 700px) {
   .hometitle {
-    margin-top: 50px;
     font-size: 3rem;
-    color: white;
+    margin-top: 50px;
   }
 }

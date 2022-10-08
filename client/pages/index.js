@@ -22,7 +22,13 @@ export default function Home() {
       ...base,
       height: 36,
       fontSize: 20,
-    })
+    }),
+    placeholder: (defaultStyles) => {
+      return {
+          ...defaultStyles,
+          color: 'black',
+      }
+  }
   }
 
   return (
@@ -45,24 +51,28 @@ export default function Home() {
           <img className={styles.homeimage} src='./Svgs/airplane.png'></img>
         </div>
         <div className={styles.rightcontainer}>
-          <form className={styles.formcontainer}>
-            <div className={styles.flightSearchCon}>
+          <div className={styles.formcontainer}>
+            <form className={styles.flightSearchCon}>
             <h2 className={styles.formInputHeaders}>Search For Flights</h2>
-              <div className={styles.labelinputcontainer}>
-                <label className={styles.formlabels}>Departure Airport</label>
-                <Select instanceId="DepartureAirportInput" options={options} styles={customStyles} onChange={(event) => SetDepartureAirportInput(event ? event.value : "")} value={options.find(item => item.value === DepartureAirportInput)} />
-              </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Arrival Airport</label>
                 <Select instanceId="ArrivalAirportInput" options={options} styles={customStyles} onChange={(event) => SetArrivalAirportInput(event ? event.value : "")} value={options.find(item => item.value === ArrivalAirportInput)} />
               </div>
               <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>From Local</label>
+                <input type="time"required className={styles.forminputs}></input>
+              </div>
+              <div className={styles.labelinputcontainer}>
+                <label className={styles.formlabels}>To Local</label>
+                <input type="time"required className={styles.forminputs}></input>
+              </div>
+              <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Date</label>
-                <input type="date" className={styles.forminputs}></input>
+                <input type="date" className={styles.forminputs} required ></input>
               </div>
               <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
-            </div>
-            <div className={styles.flightNumberSearchCon}>
+            </form>
+            <form className={styles.flightNumberSearchCon}>
               <h2 className={styles.formInputHeaders}>Search By Flight Number</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Flight Number</label>
@@ -73,8 +83,8 @@ export default function Home() {
                 <input type="date" className={styles.forminputs}></input>
               </div>
               <input className={styles.formSubmit} type="submit" value="Find Flight"></input>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </main>
     </div>
