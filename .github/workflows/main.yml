@@ -1,0 +1,36 @@
+name: Node.js CI and Setup .NET Core SDK
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  buildFrontendAndTest:
+    runs-on: ubuntu-latest 
+    defaults:
+      run:
+        working-directory: ./client
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache-dependency-path: '**/package-lock.json' 
+    - run: npm install
+    
+  buildBackend:
+  
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend/tests
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3.0.1
+      with:
+        # Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x
+        dotnet-version: 6.0.x
+    - run: dotnet test
+      
