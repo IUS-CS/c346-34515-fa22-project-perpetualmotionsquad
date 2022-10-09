@@ -66,9 +66,9 @@ export default function Home() {
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Date</label>
-                <input type="date" id="first" name="flightDate" className={styles.forminputs} required></input>
+                <input type="date" id="flightDate" name="flightDate" className={styles.forminputs} required></input>
               </div>
-              <input className={styles.formSubmit} type="submit" value="Find Flight"></input>
+              <input className={styles.formSubmit} id = "findFlightBtn" type="submit" value="Find Flight"></input>
             </form>
           </div>
         </div>
