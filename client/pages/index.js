@@ -1,34 +1,21 @@
 import Head from 'next/head'
 import styles from '../styles/Homepage.module.css'
 import React from 'react'
-import Select from 'react-select'
-import { useState } from 'react'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 export default function Home() {
-  //State
-  const [DepartureAirportInput, SetDepartureAirportInput] = useState("")
-  const [ArrivalAirportInput, SetArrivalAirportInput] = useState("")
-  const [FlightNumberInput, SetFlightNumberInput] = useState("")
-
-  //Dropdown Input Options
-  const options = [
-    { value: 'KSDF', label: 'KSDF' },
-    { value: 'KDTW', label: 'KDTW' },
-  ]
-  //Dropdown Input Styles
-  const customStyles = {
-    control: base => ({
-      ...base,
-      height: 36,
-      fontSize: 20,
-    }),
-    placeholder: (defaultStyles) => {
-      return {
-          ...defaultStyles,
-          color: 'black',
-      }
-  }
+  
+  const router = useRouter()
+  
+  const HandleFlightNumberForm = async (event) => {
+    // Stop the form from submitting and refreshing the page.
+    event.preventDefault()
+    // Get data from the form.
+    const flightNumber = event.target.flightNumber.value 
+    const date = event.target.flightDate.value
+    // Route to go to.
+    const route = `/flight/${flightNumber}/${date}`
+    router.push(route) 
   }
 
   return (
@@ -44,7 +31,6 @@ export default function Home() {
           <h2 className={styles.marginRemove}>About Us</h2>
         </Link>
       </header>
-
       <main className={styles.main}>
         <div className={styles.leftcontainer}>
           <h1 className={styles.hometitle} >DestiNation</h1>
@@ -56,7 +42,7 @@ export default function Home() {
             <h2 className={styles.formInputHeaders}>Search For Flights</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Arrival Airport</label>
-                <Select instanceId="ArrivalAirportInput" options={options} styles={customStyles} onChange={(event) => SetArrivalAirportInput(event ? event.value : "")} value={options.find(item => item.value === ArrivalAirportInput)} />
+                <input className = {styles.forminputs} placeholder="Ex-SDF" pattern="^[A-Z]{3}$" required></input> 
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>From Local</label>
@@ -72,15 +58,15 @@ export default function Home() {
               </div>
               <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
             </form>
-            <form className={styles.flightNumberSearchCon}>
+            <form className={styles.flightNumberSearchCon} onSubmit={HandleFlightNumberForm}>
               <h2 className={styles.formInputHeaders}>Search By Flight Number</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Flight Number</label>
-                <input type="input" className={styles.forminputs} onChange={(event) => SetFlightNumberInput(event.target.value)} value={FlightNumberInput} maxLength={6} placeholder="Ex-DL9367"></input>
+                <input type="input" id="flightNumber" name="flightNumber" className={styles.forminputs}  placeholder="Ex-DL9367" pattern="^[A-Z]{2}\d{3,4}$" required></input>
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Date</label>
-                <input type="date" className={styles.forminputs}></input>
+                <input type="date" id="first" name="flightDate" className={styles.forminputs} required></input>
               </div>
               <input className={styles.formSubmit} type="submit" value="Find Flight"></input>
             </form>
