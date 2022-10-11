@@ -7,14 +7,22 @@ namespace Services.FlightService;
 using System.Text.Json.Serialization;
 public class FlightService:IFlightService
 {
+    private static FlightService flightService;
     HttpClient client = new HttpClient();
     public FlightService()
     {
 
-        client.DefaultRequestHeaders.Add("X-RapidAPI-Key","");
+        client.DefaultRequestHeaders.Add("X-RapidAPI-Key","0e399b4b62msh4365c4f813b9d1bp1fd651jsn33ca5ec4b077");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    }
+    public static FlightService getFlightService()
+    {
+        if (flightService == null)
+            flightService = new FlightService();
+        
+        return flightService;
     }
     public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
     {

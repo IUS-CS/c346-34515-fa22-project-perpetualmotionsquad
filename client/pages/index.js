@@ -39,7 +39,7 @@ export default function Home() {
         <div className={styles.rightcontainer}>
           <div className={styles.formcontainer}>
             <form className={styles.flightSearchCon}>
-            <h2 className={styles.formInputHeaders}>Search For Flights</h2>
+            <h2 className={styles.formInputHeaders}>Search Flights</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Arrival Airport</label>
                 <input className = {styles.forminputs} placeholder="Ex-SDF" pattern="^[A-Z]{3}$" required></input> 
@@ -59,7 +59,7 @@ export default function Home() {
               <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
             </form>
             <form className={styles.flightNumberSearchCon} onSubmit={HandleFlightNumberForm}>
-              <h2 className={styles.formInputHeaders}>Search By Flight Number</h2>
+              <h2 className={styles.formInputHeaders}>Search Flight</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Flight Number</label>
                 <input type="input" id="flightNumber" name="flightNumber" className={styles.forminputs}  placeholder="Ex-DL9367" pattern="^[A-Z]{2}\d{3,4}$" required></input>
