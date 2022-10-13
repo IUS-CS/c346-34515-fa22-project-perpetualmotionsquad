@@ -3,6 +3,8 @@
 
 We are currently using a singleton design pattern. Our constructor on the FlightService class is set to private so that it constructs itself and it is the only one able to construct itself. We have two controllers who both use the FlightService class depending on the search options used by the user. The FlightService class is using an Interface called IFlightService as well.
 
+![Thing](/doc/images/designPattern.png)
+
 ## Design Patters Which May Be Used
 ---
 
