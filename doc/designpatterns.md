@@ -1,7 +1,7 @@
 ## Design Patterns In Use
 ---
 
-We are not currently using a design pattern. What we have is close to a singleton pattern, but our constructor on the FlightService class is not set to private; therefore, we are not using a single instance of the class. We have two controllers who both use the FlightService class depending on the search options used by the user. The FlightService class is using an Interface called IFlightService as well.
+We are currently using a singleton design pattern. Our constructor on the FlightService class is set to private so that it constructs itself and it is the only one able to construct itself. We have two controllers who both use the FlightService class depending on the search options used by the user. The FlightService class is using an Interface called IFlightService as well.
 
 ## Design Patters Which May Be Used
 ---
