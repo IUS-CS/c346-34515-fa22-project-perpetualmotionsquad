@@ -1,6 +1,6 @@
 # Sprint Ceremony Minutes
   
-Date: 2022-29-15
+Date: 2022-09-15
 Members present:
 * Sebastian Burman
 * Brad Robinson
