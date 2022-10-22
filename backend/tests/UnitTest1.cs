@@ -2,9 +2,6 @@ using Xunit;
 using Moq;
 using Interfaces.FlightService;
 using Controllers;
-using Services.FlightService;
-using Microsoft.AspNetCore.Mvc;
-
 namespace tests;
 
 public class UnitTest1
@@ -14,7 +11,7 @@ public class UnitTest1
 
 
     [Fact]
-    public void ReturnFalse()
+    public void ReturnFalse1()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("546", ""));
 
@@ -28,9 +25,38 @@ public class UnitTest1
         flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
     }
 
+    [Fact]
+    public void ReturnFalse2()
+    {
+        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA11", ""));
+
+        // Arrange
+        controller = new FlightsController(flightServiceMock.Object);
+
+        // Act 
+        var result = controller.GetFlight("AA11", "");
+
+        // Assert
+        flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+    }
 
     [Fact]
-    public void ReturnTrue()
+    public void ReturnFalse3()
+    {
+        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA1111", ""));
+
+        // Arrange
+        controller = new FlightsController(flightServiceMock.Object);
+
+        // Act 
+        var result = controller.GetFlight("AA11111", "");
+
+        // Assert
+        flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+    }
+
+    [Fact]
+    public void ReturnTrue1()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA546", ""));
 
@@ -39,6 +65,21 @@ public class UnitTest1
 
         // Act 
         var result = controller.GetFlight("AA546", "");
+
+        // Assert
+        flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+    }
+
+    [Fact]
+    public void ReturnTrue2()
+    {
+        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("BB111", ""));
+
+        // Arrange
+        controller = new FlightsController(flightServiceMock.Object);
+
+        // Act 
+        var result = controller.GetFlight("BB111", "");
 
         // Assert
         flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Once);

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using FlightApi.Models;
 using Interfaces.FlightService;
-using Services.FlightService;
 
 namespace Controllers;
 
