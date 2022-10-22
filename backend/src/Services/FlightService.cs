@@ -8,7 +8,7 @@ namespace Services.FlightService;
 using System.Text.Json.Serialization;
 public class FlightService:IFlightService
 {
-    private static FlightService flightService;
+    private FlightService flightService;
     HttpClient client = new HttpClient();
     public FlightService()
     {
@@ -17,13 +17,6 @@ public class FlightService:IFlightService
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    }
-    public static FlightService getFlightService()
-    {
-        if (flightService == null)
-            flightService = new FlightService();
-        
-        return flightService;
     }
     // get list of flights by flight number and date
     public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
@@ -43,13 +36,4 @@ public class FlightService:IFlightService
         return listOfFlights;
     }
 
-    // Check valid flight number
-    public bool flightNumberIsValid(String flightNumber)
-     {
-        string pattern = @"^[A-Z]{2}\d{3,4}$"; 
-         if (!Regex.IsMatch(flightNumber, pattern, RegexOptions.IgnoreCase))
-            return false;
-
-        return true;
-     }
 }
