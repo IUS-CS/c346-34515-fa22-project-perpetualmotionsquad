@@ -16,13 +16,13 @@ public class UnitTest1
     [Fact]
     public void ReturnFalse()
     {
-        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("546", "2022-10-22"));
+        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("546", ""));
 
         // Arrange
         controller = new FlightsController(flightServiceMock.Object);
 
         // Act 
-        var result = controller.GetFlight("546", "2022-10-22");
+        var result = controller.GetFlight("546", "");
 
         // Assert
         flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
@@ -32,13 +32,13 @@ public class UnitTest1
     [Fact]
     public void ReturnTrue()
     {
-        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA546", "2022-10-22"));
+        flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA546", ""));
 
         // Arrange
         controller = new FlightsController(flightServiceMock.Object);
 
         // Act 
-        var result = controller.GetFlight("AA546", "2022-10-22");
+        var result = controller.GetFlight("AA546", "");
 
         // Assert
         flightServiceMock.Verify(f => f.GetFlightFromFlightNumber(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
