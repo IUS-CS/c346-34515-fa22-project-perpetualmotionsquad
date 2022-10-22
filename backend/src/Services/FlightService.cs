@@ -1,4 +1,5 @@
 using FlightApi.Models;
+using System.Text.RegularExpressions;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Interfaces.FlightService;
@@ -24,6 +25,7 @@ public class FlightService:IFlightService
         
         return flightService;
     }
+    // get list of flights by flight number and date
     public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
     {
         var streamTask = client.GetStreamAsync($"https://aerodatabox.p.rapidapi.com/flights/number/{flightNumber}/{date}?withAircraftImage=true&withLocation=true");
@@ -40,4 +42,14 @@ public class FlightService:IFlightService
         var listOfFlights = await JsonSerializer.DeserializeAsync<Flights>(await streamTask);
         return listOfFlights;
     }
+
+    // Check valid flight number
+    public bool flightNumberIsValid(String flightNumber)
+     {
+        string pattern = @"^[A-Z]{2}\d{3,4}$"; 
+         if (!Regex.IsMatch(flightNumber, pattern, RegexOptions.IgnoreCase))
+            return false;
+
+        return true;
+     }
 }

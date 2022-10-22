@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using FlightApi.Models;
 using Interfaces.FlightService;
-using System.Text.RegularExpressions;
 using Services.FlightService;
 
-
+namespace Controllers;
 [Route("[controller]")]
 [ApiController]
 public class FlightsController : ControllerBase
@@ -22,14 +21,11 @@ public class FlightsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<List<Flight>>> GetFlight(string flightNumber, string date)
     {
-
-        string pattern = @"^[A-Z]{2}\d{3,4}$";
-
-        if (!Regex.IsMatch(flightNumber, pattern, RegexOptions.IgnoreCase))
+        var isValid = flightService.flightNumberIsValid(flightNumber);
+        if (!isValid)
             return BadRequest();
 
         var flight = await flightService.GetFlightFromFlightNumber(flightNumber, date);
-
         return Ok(flight);
     }
 }
