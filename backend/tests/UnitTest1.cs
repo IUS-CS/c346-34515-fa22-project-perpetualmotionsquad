@@ -11,7 +11,7 @@ public class UnitTest1
 
 
     [Fact]
-    public void ReturnFalse1()
+    public void FlightNumberReturnFalse1()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("546", ""));
 
@@ -26,8 +26,9 @@ public class UnitTest1
     }
 
     [Fact]
-    public void ReturnFalse2()
+    public void FlightNumberReturnFalse2()
     {
+
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA11", ""));
 
         // Arrange
@@ -41,7 +42,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void ReturnFalse3()
+    public void FlightNumberReturnFalse3()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA1111", ""));
 
@@ -56,7 +57,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void ReturnTrue1()
+    public void FlightNumberReturnTrue1()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("AA546", ""));
 
@@ -71,7 +72,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void ReturnTrue2()
+    public void FlightNumberReturnTrue2()
     {
         flightServiceMock.Setup(f => f.GetFlightFromFlightNumber("BB111", ""));
 
