@@ -4,10 +4,9 @@ using System.Text.Json;
 using Interfaces.FlightService;
 
 namespace Services.FlightService;
-using System.Text.Json.Serialization;
 public class FlightService:IFlightService
 {
-    private static FlightService flightService;
+    private FlightService flightService;
     HttpClient client = new HttpClient();
     public FlightService()
     {
@@ -17,13 +16,7 @@ public class FlightService:IFlightService
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
-    public static FlightService getFlightService()
-    {
-        if (flightService == null)
-            flightService = new FlightService();
-        
-        return flightService;
-    }
+    // get list of flights by flight number and date
     public async Task<List<Flight>> GetFlightFromFlightNumber(string flightNumber, string date)
     {
         var streamTask = client.GetStreamAsync($"https://aerodatabox.p.rapidapi.com/flights/number/{flightNumber}/{date}?withAircraftImage=true&withLocation=true");
@@ -40,4 +33,5 @@ public class FlightService:IFlightService
         var listOfFlights = await JsonSerializer.DeserializeAsync<Flights>(await streamTask);
         return listOfFlights;
     }
+
 }
