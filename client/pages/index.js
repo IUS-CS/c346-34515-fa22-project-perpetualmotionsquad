@@ -33,8 +33,8 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <div className={styles.leftcontainer}>
-          <h1 className={styles.hometitle} >DestiNation</h1>
-          <img className={styles.homeimage} src='./Svgs/airplane.png'></img>
+          <h1  className={styles.hometitle} data-testid="homeTitle"  >DestiNation</h1>
+          <img className={styles.homeimage} data-testid="homeImage"  alt="Airplane Image" src='./Svgs/airplane.png'></img>
         </div>
         <div className={styles.rightcontainer}>
           <div className={styles.formcontainer}>
