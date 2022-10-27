@@ -18,6 +18,9 @@ jobs:
         node-version: 16
         cache-dependency-path: '**/package-lock.json' 
     - run: npm install
+    
+  runFrontendTests:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./client/__tests__
