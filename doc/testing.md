@@ -21,3 +21,8 @@ For our backend testing we are using xunit to run unit tests on dotnet. We are c
 ```console
 dotnet test
 ```
+
+## GitHub Actions
+---
+
+We have also setup our github actions to test that our frontend and back end build and then run their tests anytime we make a commit.
