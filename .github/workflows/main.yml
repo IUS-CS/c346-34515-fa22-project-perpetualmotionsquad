@@ -18,6 +18,11 @@ jobs:
         node-version: 16
         cache-dependency-path: '**/package-lock.json' 
     - run: npm install
+    defaults:
+      run:
+        working-directory: ./client/__tests__
+    steps:
+    - run: npm test
     
   buildBackend:
   
