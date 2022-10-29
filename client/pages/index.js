@@ -27,8 +27,8 @@ export default function Home() {
       </Head>
 
       <header className={styles.header}>
-        <Link href='/about'>
-          <h2 className={styles.marginRemove}>About Us</h2>
+        <Link className={styles.marginRemove} href='/about'>
+          About Us
         </Link>
       </header>
       <main className={styles.main}>
@@ -58,17 +58,17 @@ export default function Home() {
               </div>
               <input className={styles.formSubmit} type="submit" value="Find Flights"></input>
             </form>
-            <form className={styles.flightNumberSearchCon} onSubmit={HandleFlightNumberForm}>
+            <form className={styles.flightNumberSearchCon} data-testid = "flightNumberForm" onSubmit={HandleFlightNumberForm}>
               <h2 className={styles.formInputHeaders}>Search Flight</h2>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Flight Number</label>
-                <input type="input" id="flightNumber" name="flightNumber" className={styles.forminputs}  placeholder="Ex-DL9367" pattern="^[A-Z]{2}\d{3,4}$" required></input>
+                <input type="input" id="flightNumber" data-testid = "flightNumberInput" aria-invalid="true" name="flightNumber" className={styles.forminputs}  placeholder="Ex-DL9367" pattern="^[A-Z]{2}\d{3,4}$" required></input>
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Date</label>
-                <input type="date" id="flightDate" name="flightDate" className={styles.forminputs} required></input>
+                <input type="date" id="flightDate" data-testid = "flightNumberDateInput" name="flightDate" className={styles.forminputs} required></input>
               </div>
-              <input className={styles.formSubmit} id = "findFlightBtn" type="submit" value="Find Flight"></input>
+              <input className={styles.formSubmit} data-testid="submitFlightNumberBtn" id = "findFlightBtn" type="submit" value="Find Flight"></input>
             </form>
           </div>
         </div>

@@ -114,10 +114,17 @@
   flex: 1;
   justify-content: right;
   align-items: center;
-  color: white;
   padding-right: 20px;
   height: 50px;
   left: 10px;
+  font-size: 1.5rem;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 .marginRemove {
@@ -158,10 +165,11 @@
 
 /*When view gets 1000px or more make form text headers larger*/
 @media only screen and (min-height: 1000px) {
-  .formInputHeaders{
+  .formInputHeaders {
     font-size: 1.7rem;
   }
 }
+
 /*Shrink homepage title for mobile*/
 @media only screen and (max-width: 700px) {
   .hometitle {
