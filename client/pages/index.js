@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Homepage.module.css'
+import styles from '../styles/pagestyles/HomePage.module.css'
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -50,7 +50,7 @@ export default function Home() {
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>To Local</label>
-                <input type="time"required className={styles.forminputs}></input>
+                <input type="time"required placeholder="13:00pm" className={styles.forminputs}></input>
               </div>
               <div className={styles.labelinputcontainer}>
                 <label className={styles.formlabels}>Date</label>

@@ -1,0 +1,123 @@
+.flightDataContainer {
+    width: 100%;
+    height: 300px;
+    border-radius: 7px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dataContainer {
+    width: 40%;
+    height: 95%;
+    background-color: rgba(86, 177, 242, 0.835);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 7px;
+}
+
+.textContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.textContainer h2 {
+    margin: 0px;
+    color: white;
+}
+
+.textContainer p {
+    color: white;
+    margin: 0px;
+}
+
+.planeImage {
+    max-width: 50%;
+    height: 95%;
+    border-radius: 7px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .flightDataContainer {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .flightDataContainer {
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+    }
+
+    .dataContainer {
+        flex-direction: row;
+        width: 95%;
+        height: 125px;
+        min-height: 125px;
+        margin-top: 20px;
+    }
+
+    .dataContainer h2 {
+        font-size: 1.1rem;
+    }
+
+    .dataContainer p {
+        font-size: .9rem;
+    }
+
+    .planeImage {
+        margin-top: 30px;
+        max-width: 95%;
+        height: 95%;
+    }
+}
+
+@media only screen and (min-height: 1300px) {
+    .flightDataContainer{
+        height: 450px;
+    }
+    .dataContainer {
+        height: 400px;
+    }
+
+    .planeImage {
+        height: 400px;
+    }
+
+    .dataContainer h2 {
+        font-size: 2rem;
+    }
+
+    .dataContainer p {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-height: 1800px) {
+    .flightDataContainer{
+        height: 550px;
+    }
+    .dataContainer {
+        height: 500px;
+    }
+
+    .planeImage {
+        height: 500px;
+    }
+
+    .dataContainer h2 {
+        font-size: 2.7rem;
+    }
+
+    .dataContainer p {
+        font-size: 2.3rem;
+    }
+}

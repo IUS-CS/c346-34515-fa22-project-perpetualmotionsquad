@@ -1,0 +1,15 @@
+.locationContainer{
+    width: 95%;
+    margin-top: 7px;
+    height: 100px;
+    flex-shrink: 0;
+    background-color:  rgba(123, 192, 241, 0.835);;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (min-height: 1200px) {
+    .locationContainer{
+        height: 130px
+    }
+}
