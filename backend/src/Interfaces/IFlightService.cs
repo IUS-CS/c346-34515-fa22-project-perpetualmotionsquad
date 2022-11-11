@@ -1,4 +1,4 @@
-using FlightApi.Models;
+using FlightApi.Models.Flights;
 
 namespace Interfaces.FlightService;
 public interface IFlightService

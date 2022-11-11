@@ -1,4 +1,4 @@
-namespace FlightApi.Models;
+namespace FlightApi.Models.Flights;
 using System.Text.Json.Serialization;
 public class Airline
 {
