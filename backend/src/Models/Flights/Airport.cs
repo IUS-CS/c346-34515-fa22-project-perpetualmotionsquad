@@ -18,7 +18,7 @@ public class Airport
     public string? MunicipalityName{get; set;}
 
     [JsonPropertyName("location")]
-    public Location Location{get; set;}
+    public Location? Location{get; set;}
     
     [JsonPropertyName("countryCode")]
     public string? CountryCode{get; set;}

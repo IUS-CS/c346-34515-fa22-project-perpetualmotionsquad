@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 public class Viewport 
 {
     [JsonPropertyName("northeast")]
-    public Northeast Northeast{get; set;}
+    public Northeast? Northeast{get; set;}
 
 
     [JsonPropertyName("southwest")]
-    public Southwest Southwest{get; set;}
+    public Southwest? Southwest{get; set;}
 }

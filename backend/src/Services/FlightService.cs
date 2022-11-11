@@ -23,7 +23,6 @@ public class FlightService:IFlightService
         return listOfFlights;
     }
 
-
     public async Task<Flights> GetAllArrivalFlights(string toLocal, string fromLocal, string icao)
     {
 

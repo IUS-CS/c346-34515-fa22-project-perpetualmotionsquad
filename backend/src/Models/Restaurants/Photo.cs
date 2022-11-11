@@ -9,11 +9,11 @@ public class Photo
     public int height {get; set;}
 
     [JsonPropertyName("html_attributions")]
-    public List<string> html_attributions {get; set;}
+    public List<string>? html_attributions {get; set;}
 
 
     [JsonPropertyName("photo_reference")]
-    public string photo_reference{get; set;}
+    public string? photo_reference{get; set;}
 
 
 
