@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using FlightApi.Models;
+using FlightApi.Models.Flights;
 using Interfaces.FlightService;
 using System.Text.RegularExpressions;
 
@@ -28,6 +28,4 @@ public class FlightsController : ControllerBase
         var flight = await _flightService.GetFlightFromFlightNumber(flightNumber, date);
         return Ok(flight);
     }
-
-
 }

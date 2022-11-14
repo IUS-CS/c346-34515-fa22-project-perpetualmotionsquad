@@ -1,4 +1,4 @@
-using FlightApi.Models;
+using FlightApi.Models.Flights;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Interfaces.FlightService;
@@ -6,11 +6,10 @@ using Interfaces.FlightService;
 namespace Services.FlightService;
 public class FlightService:IFlightService
 {
-    private FlightService flightService;
     HttpClient client = new HttpClient();
     public FlightService()
     {
-
+        
         client.DefaultRequestHeaders.Add("X-RapidAPI-Key","");
         client.DefaultRequestHeaders.Add("X-RapidAPI-Host","aerodatabox.p.rapidapi.com");
         client.DefaultRequestHeaders.Accept.Clear();
@@ -23,7 +22,6 @@ public class FlightService:IFlightService
         var listOfFlights = await JsonSerializer.DeserializeAsync<List<Flight>>(await streamTask);
         return listOfFlights;
     }
-
 
     public async Task<Flights> GetAllArrivalFlights(string toLocal, string fromLocal, string icao)
     {

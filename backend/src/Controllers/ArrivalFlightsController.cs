@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using FlightApi.Models;
+using FlightApi.Models.Flights;
 using Interfaces.FlightService;
 
 namespace Controllers;
@@ -22,5 +22,4 @@ public class ArrivalFlightsController : ControllerBase
         var flights = await _flightService.GetAllArrivalFlights(toLocal, fromLocal, icao);
         return flights;
     }
-
 }
