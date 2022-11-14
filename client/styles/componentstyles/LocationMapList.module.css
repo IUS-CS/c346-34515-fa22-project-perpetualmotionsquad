@@ -1,0 +1,34 @@
+.locationMapListContainer{
+    margin-top: 15px;
+    height: 600px;
+    width: 95%;
+    margin-bottom: 15px;
+    max-width: 1300px;
+    border-radius: 7px;
+    background-color: rgba(86, 177, 242, 0.835);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.locationMapListHeader{
+    font-size: 2rem;
+    color: white;
+    margin-top: 20px;
+}
+.listContainer{
+    height: 90%;
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (min-height: 1200px) {
+    .locationMapListContainer{
+        height: 900px;
+    }
+    .locationMapListHeader{
+        font-size: 2.5rem;
+    }
+}

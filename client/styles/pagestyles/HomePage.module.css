@@ -2,6 +2,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  background-color:#2684FF;
+  overflow-y: scroll;
 }
 
 .main {
@@ -91,6 +93,9 @@
   border: none;
   border-radius: 4px;
   font-size: 1.3rem;
+  padding: 0;
+  color: black;
+  -webkit-appearance: none;
 }
 
 .forminputs:focus {
@@ -106,8 +111,10 @@
   border: none;
   background-color: white;
   transition: 0.3s;
+  -webkit-appearance: none;
+  color: black;
+  font-weight: 500;
 }
-
 .header {
   position: absolute;
   display: flex;
