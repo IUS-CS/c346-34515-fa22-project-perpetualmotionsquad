@@ -110,10 +110,12 @@
   border-radius: 6px;
   border: none;
   background-color: white;
-  transition: 0.3s;
   -webkit-appearance: none;
   color: black;
   font-weight: 500;
+}
+.formSubmit:hover{
+  background-color: rgb(237, 237, 237);
 }
 .header {
   position: absolute;

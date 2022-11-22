@@ -23,8 +23,6 @@ function flightStatusHeaderText(status, arrivalAirport) {
             return <h1>Sorry, This Flight Has Been Canceled</h1>
         case "Arrived":
             return <h1>Welcome To {arrivalAirport}</h1>
-
-
         case "EnRoute":
             return <h1>Get Ready To Be In {arrivalAirport}</h1>
         case "CheckIn":
