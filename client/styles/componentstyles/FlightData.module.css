@@ -49,7 +49,6 @@
         margin-top: 20px;
     }
 }
-
 @media only screen and (max-width: 650px) {
     .flightDataContainer {
         flex-direction: column;
@@ -63,10 +62,12 @@
         height: 125px;
         min-height: 125px;
         margin-top: 20px;
+        height: 100%;
+        text-align: center;
     }
 
     .dataContainer h2 {
-        font-size: 1.1rem;
+        font-size: .9rem;
     }
 
     .dataContainer p {

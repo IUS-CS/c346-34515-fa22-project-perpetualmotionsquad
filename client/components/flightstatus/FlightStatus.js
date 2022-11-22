@@ -36,7 +36,14 @@ export default function FlightStatus(props) {
     }
     function flightStatusLogicSecond() {
         switch (flightStatus) {
-            case "Flying":
+            case ("Flying"):
+                return (
+                    <div className={styles.planeWithCircleCon}>
+                        <h4 className={styles.planeStateText}>Flying</h4>
+                        <img className={styles.plane} src="/Svgs/plane.svg" />
+                        <div className={styles.dot}></div>
+                    </div>)
+            case ("Departed"):
                 return (
                     <div className={styles.planeWithCircleCon}>
                         <h4 className={styles.planeStateText}>Flying</h4>
