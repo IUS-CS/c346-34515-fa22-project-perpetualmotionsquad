@@ -16,7 +16,7 @@ public class RestautantService : IRestautantService
     // get list of flights by flight number and date
     public async Task<Restautants> GetRestautantsByLatLng(string lat, string lng)
     {
-        var streamTask = client.GetStreamAsync($"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2c{lng}&radius=500&type=restautant&key=APIKEY");
+        var streamTask = client.GetStreamAsync($"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2c{lng}&radius=1000&type=restaurant&key=");
         var listOfRestautants= await JsonSerializer.DeserializeAsync<Restautants>(await streamTask);
         listOfRestautants.Results.Sort(delegate (Result x, Result y)
         {

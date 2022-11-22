@@ -21,7 +21,7 @@ function FlightData(props) {
                     <p>{props.aircraft}</p>
                 </div>
             </div>
-            <img className={styles.planeImage} src={props.aircraftImgUrl}>
+            <img className={styles.planeImage} src={props.aircraftImgUrl?props.aircraftImgUrl:"/noImageFound.jpg"}>
             </img>
         </div>)
 }

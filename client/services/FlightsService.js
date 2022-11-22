@@ -20,7 +20,7 @@ class FlightService {
     }
     catch (err) {
       console.log(err)
-      return {}
+      return null
     }
 
   }
