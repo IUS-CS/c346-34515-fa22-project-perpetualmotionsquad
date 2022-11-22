@@ -1,27 +1,27 @@
 import styles from "../../styles/componentstyles/FlightData.module.css"
 
-function FlightData() {
+function FlightData(props) {
     return (
         <div className={styles.flightDataContainer}>
             <div className={styles.dataContainer}>
                 <div className={styles.textContainer}>
                     <h2>Departing From:</h2>
-                    <p>Dallas Fort Worth</p>
+                    <p>{props.departureAirport}</p>
                 </div>
                 <div className = {styles.textContainer}>
                     <h2>Arriving At:</h2>
-                    <p>Harrisburg</p>
+                    <p>{props.arrivalAirport}</p>
                 </div>
                 <div className = {styles.textContainer}>
                     <h2>Distance:</h2>
-                    <p>1230.791 Miles</p>
+                    <p>{props.distance} Miles</p>
                 </div>
                 <div className={styles.textContainer}>
                     <h2>Aircraft</h2>
-                    <p>Airbus A319</p>
+                    <p>{props.aircraft}</p>
                 </div>
             </div>
-            <img className={styles.planeImage} src="https://farm66.staticflickr.com/65535/52301300663_edee17a549_z.jpg">
+            <img className={styles.planeImage} src={props.aircraftImgUrl}>
             </img>
         </div>)
 }
