@@ -65,7 +65,6 @@ export async function getServerSideProps(context) {
     let restaurantData = []
     let hotelData = []
     const flightData = await FlightService.GetFlightFromNumber(flightNumber, date)
-    console.log(flightData)
     if (flightData != null) {
         restaurantData = await MapDataService.GetRestaurantsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
         hotelData = await MapDataService.GetHotelsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
