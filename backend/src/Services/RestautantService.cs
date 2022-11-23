@@ -13,10 +13,10 @@ public class RestautantService : IRestautantService
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
-    // get list of flights by flight number and date
+    
     public async Task<Restautants> GetRestautantsByLatLng(string lat, string lng)
     {
-        var streamTask = client.GetStreamAsync($"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2c{lng}&radius=1000&type=restaurant&key=");
+        var streamTask = client.GetStreamAsync($"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat}%2c{lng}&radius=3000&type=restaurant&key=APIKEY");
         var listOfRestautants= await JsonSerializer.DeserializeAsync<Restautants>(await streamTask);
         listOfRestautants.Results.Sort(delegate (Result x, Result y)
         {
@@ -24,4 +24,5 @@ public class RestautantService : IRestautantService
         });
         return listOfRestautants;
     }
+    
 }

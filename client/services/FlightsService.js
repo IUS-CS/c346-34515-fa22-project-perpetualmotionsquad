@@ -3,7 +3,6 @@ import https from "https"
 
 class FlightService {
   static async GetFlightFromNumber(flightNumber, date) {
-    //Remove is. You don't want to have this
     axios.defaults.httpsAgent = new https.Agent({
       rejectUnauthorized: false
     })

@@ -27,48 +27,50 @@ function flightStatusHeaderText(status, arrivalAirport) {
             return <h1>Get Ready To Be In {arrivalAirport}</h1>
         case "CheckIn":
             return <h1>Time To Check In</h1>
-        case "Boarding" :
+        case "Boarding":
             return <h1>Flight Is Boarding</h1>
-        case "GateClosed" :
+        case "GateClosed":
             return <h1>Gates Just Closed</h1>
-        case "Delayed" :
+        case "Delayed":
             return <h1>Flight Is Delayed</h1>
-        case "Approaching" :
+        case "Approaching":
             return <h1>Get Ready To Be In {arrivalAirport}</h1>
-        case "Expected" :
+        case "Expected":
             return <h1>Flight Is Expected</h1>
-        case "Diverted" :
+        case "Diverted":
             return <h1>Flight Has Diverted</h1>
-        case "CanceledUncertain" :
+        case "CanceledUncertain":
             return <h1>Flight Is Canceled But Not Certain</h1>
     }
 }
 
-export default function flight({ flightData, restaurantData }) {
+export default function flight({ flightData, restaurantData, hotelData }) {
     return (
-    flightData ?
-    <div className={styles.flightPageContainer}>
-        <div className={styles.leftPageContainer}>
-            {flightStatusHeaderText(flightData[0].status, flightData[0].arrival.airport.shortName)}
-            <FlightStatus flightStatus={flightData[0].status}></FlightStatus>
-            <FlightData arrivalAirport={flightData[0].arrival.airport.shortName} departureAirport={flightData[0].departure.airport.shortName} distance={flightData[0].greatCircleDistance.mile} aircraft={flightData[0].aircraft.model} aircraftImgUrl={flightData[0].aircraft.image?.url}></FlightData>
-        </div>
-        <div className={styles.rightPageContainer}>
-            <LocationMapList listData={restaurantData.results} i></LocationMapList>
-            <LocationMapList></LocationMapList>
-        </div>
-    </div>:<div className={styles.flightPageNotFound}><h1>Error Finding Your Flight</h1></div>)
+        flightData ?
+            <div className={styles.flightPageContainer}>
+                <div className={styles.leftPageContainer}>
+                    {flightStatusHeaderText(flightData[0].status, flightData[0].arrival.airport.shortName)}
+                    <FlightStatus flightStatus={flightData[0].status}></FlightStatus>
+                    <FlightData arrivalAirport={flightData[0].arrival.airport.shortName} departureAirport={flightData[0].departure.airport.shortName} distance={flightData[0].greatCircleDistance.mile} aircraft={flightData[0].aircraft.model} aircraftImgUrl={flightData[0].aircraft.image?.url}></FlightData>
+                </div>
+                <div className={styles.rightPageContainer}>
+                    <LocationMapList listTitle = "Restaurants"listData={restaurantData.results}></LocationMapList>
+                    <LocationMapList listTitle = "Hotels" listData={hotelData.results}></LocationMapList>
+                </div>
+            </div> : <div className={styles.flightPageNotFound}><h1>Error Finding Your Flight</h1></div>)
 }
 export async function getServerSideProps(context) {
     const flightNumber = context.params.flightnumber
     const date = context.params.date
     let restaurantData = []
+    let hotelData = []
     const flightData = await FlightService.GetFlightFromNumber(flightNumber, date)
     console.log(flightData)
     if (flightData != null) {
         restaurantData = await MapDataService.GetRestaurantsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
+        hotelData = await MapDataService.GetHotelsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
     }
     return {
-        props: { flightData: flightData, restaurantData: restaurantData },
+        props: { flightData: flightData, restaurantData: restaurantData, hotelData: hotelData },
     }
 }
