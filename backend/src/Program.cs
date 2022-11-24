@@ -1,7 +1,7 @@
 using Interfaces.FlightService;
 using Services.FlightService;
-using Interfaces.RestautantService;
-using Services.Restautant;
+using Interfaces.RestaurantService;
+using Services.Restaurant;
 using Interfaces.HotelService;
 using Services.Hotel;
 
@@ -15,7 +15,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 
 builder.Services.AddScoped<IFlightService, FlightService>();
-builder.Services.AddScoped<IRestautantService, RestautantService>();
+builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 builder.Services.AddScoped<IHotelService, HotelService>();
 
 

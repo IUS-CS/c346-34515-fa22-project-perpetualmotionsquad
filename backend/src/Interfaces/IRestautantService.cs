@@ -1,8 +1,8 @@
 
 using FlightApi.Models.Restaurants;
 
-namespace Interfaces.RestautantService;
-public interface IRestautantService
+namespace Interfaces.RestaurantService;
+public interface IRestaurantService
 {
-    public Task<Restautants> GetRestautantsByLatLng(string lat, string lng);
+    public Task<Restaurants> GetRestautantsByLatLng(string lat, string lng);
 }

@@ -15,11 +15,24 @@ public class HotelsController : ControllerBase
 
     // GET: Hotels/location?lat=1234&lng=1234
     [HttpGet("location")]
-    // [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Hotel))]
-    // [ProducesResponseType(StatusCodes.Status404NotFound)]
-    // [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Hotels))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Hotels>> GetRestautants(string lat, string lng)
     {
+
+        double la, lg;
+        bool isLaValid = Double.TryParse(lat, out la);
+        bool isLgValid = Double.TryParse(lng, out lg);
+        if (!(isLaValid && isLgValid))
+            return BadRequest();
+        
+        if (la < -90 || la > 90)
+            return BadRequest();
+
+        if (lg < -180 || lg > 180)
+            return BadRequest();
+
         var hotels = await _hotelService.GetHotelsByLatLng(lat, lng);
         return hotels;
     }
