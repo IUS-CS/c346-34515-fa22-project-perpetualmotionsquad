@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using FlightApi.Models.Restaurants;
-using Interfaces.RestaurantService;
+using FlightApi.Models.GoogleAPI;
+using Interfaces.GoogleService;
 
 namespace Controllers;
 [Route("[controller]")]
 [ApiController]
 public class RestautantsController : ControllerBase
 {
-    private readonly IRestaurantService _restautantService;
+    private readonly IGoogleService _googleService;
 
-    public RestautantsController(IRestaurantService restautantService){
-        _restautantService = restautantService;
+    public RestautantsController(IGoogleService googleService){
+        _googleService = googleService;
     }
 
     // GET: Restautants/location?lat=1234&lng=1234
@@ -18,7 +18,7 @@ public class RestautantsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Restaurants))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Restaurants>> GetRestautants(string lat, string lng)
+    public async Task<ActionResult<Restaurants>> GetRestaurants(string lat, string lng)
     {
         double la, lg;
         bool isLaValid = Double.TryParse(lat, out la);
@@ -32,7 +32,7 @@ public class RestautantsController : ControllerBase
         if (lg < -180 || lg > 180)
             return BadRequest();
 
-        var restautants = await _restautantService.GetRestautantsByLatLng(lat, lng);
+        var restautants = await _googleService.GetRestautantsByLatLng(lat, lng);
         return restautants;
     }
 }

@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using FlightApi.Models.Restaurants;
-using Interfaces.HotelService;
+using FlightApi.Models.GoogleAPI;
+using Interfaces.GoogleService;
 
 namespace Controllers;
 [Route("[controller]")]
 [ApiController]
 public class HotelsController : ControllerBase
 {
-    private readonly IHotelService _hotelService;
+    private readonly IGoogleService _googleService;
 
-    public HotelsController(IHotelService hotelService){
-        _hotelService = hotelService;
+    public HotelsController(IGoogleService googleService){
+        _googleService = googleService;
     }
 
     // GET: Hotels/location?lat=1234&lng=1234
@@ -33,7 +33,7 @@ public class HotelsController : ControllerBase
         if (lg < -180 || lg > 180)
             return BadRequest();
 
-        var hotels = await _hotelService.GetHotelsByLatLng(lat, lng);
+        var hotels = await _googleService.GetHotelsByLatLng(lat, lng);
         return hotels;
     }
 }

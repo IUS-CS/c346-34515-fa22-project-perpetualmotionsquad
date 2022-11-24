@@ -1,4 +1,4 @@
-namespace FlightApi.Models.Restaurants;
+namespace FlightApi.Models.GoogleAPI;
 using System.Text.Json.Serialization;
 
 public class Restaurants
