@@ -8,7 +8,11 @@
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    text-decoration: none;
     
+}
+.locationContainer:hover{
+    background-color:  rgba(145, 200, 239, 0.835);
 }
 .iconRatingContainer{
     display: flex;

@@ -2,6 +2,9 @@ using Interfaces.FlightService;
 using Services.FlightService;
 using Interfaces.RestautantService;
 using Services.Restautant;
+using Interfaces.HotelService;
+using Services.Hotel;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +16,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddScoped<IFlightService, FlightService>();
 builder.Services.AddScoped<IRestautantService, RestautantService>();
+builder.Services.AddScoped<IHotelService, HotelService>();
 
 
 var app = builder.Build();

@@ -23,39 +23,53 @@ function flightStatusHeaderText(status, arrivalAirport) {
             return <h1>Sorry, This Flight Has Been Canceled</h1>
         case "Arrived":
             return <h1>Welcome To {arrivalAirport}</h1>
+        case "EnRoute":
+            return <h1>Get Ready To Be In {arrivalAirport}</h1>
+        case "CheckIn":
+            return <h1>Time To Check In</h1>
+        case "Boarding":
+            return <h1>Flight Is Boarding</h1>
+        case "GateClosed":
+            return <h1>Gates Just Closed</h1>
+        case "Delayed":
+            return <h1>Flight Is Delayed</h1>
+        case "Approaching":
+            return <h1>Get Ready To Be In {arrivalAirport}</h1>
+        case "Expected":
+            return <h1>Flight Is Expected</h1>
+        case "Diverted":
+            return <h1>Flight Has Diverted</h1>
+        case "CanceledUncertain":
+            return <h1>Flight Is Canceled But Not Certain</h1>
     }
 }
 
-export default function flight({ flightData, restaurantData }) {
-    console.log(flightData)
-    const flightStatus = flightData[0].status
-    const arrivalAirport = flightData[0].arrival.airport.shortName
-    const departureAirport = flightData[0].departure.airport.shortName
-    const distance = flightData[0].greatCircleDistance.mile
-    const aircraft = flightData[0].aircraft.model
-    const aircraftImg = flightData[0].aircraft.image.url
+export default function flight({ flightData, restaurantData, hotelData }) {
     return (
-        <div className={styles.flightPageContainer}>
-            <div className={styles.leftPageContainer}>
-                {flightStatusHeaderText(flightStatus, arrivalAirport)}
-                <FlightStatus flightStatus={flightStatus}></FlightStatus>
-                <FlightData arrivalAirport={arrivalAirport} departureAirport={departureAirport} distance={distance} aircraft={aircraft} aircraftImgUrl = {aircraftImg}></FlightData>
-            </div>
-            <div className={styles.rightPageContainer}>
-                <LocationMapList listData={restaurantData.results} i></LocationMapList>
-                <LocationMapList></LocationMapList>
-            </div>
-        </div>
-    )
+        flightData ?
+            <div className={styles.flightPageContainer}>
+                <div className={styles.leftPageContainer}>
+                    {flightStatusHeaderText(flightData[0].status, flightData[0].arrival.airport.shortName)}
+                    <FlightStatus flightStatus={flightData[0].status}></FlightStatus>
+                    <FlightData arrivalAirport={flightData[0].arrival.airport.shortName} departureAirport={flightData[0].departure.airport.shortName} distance={flightData[0].greatCircleDistance.mile} aircraft={flightData[0].aircraft.model} aircraftImgUrl={flightData[0].aircraft.image?.url}></FlightData>
+                </div>
+                <div className={styles.rightPageContainer}>
+                    <LocationMapList listTitle = "Restaurants"listData={restaurantData.results}></LocationMapList>
+                    <LocationMapList listTitle = "Hotels" listData={hotelData.results}></LocationMapList>
+                </div>
+            </div> : <div className={styles.flightPageNotFound}><h1>Error Finding Your Flight</h1></div>)
 }
 export async function getServerSideProps(context) {
     const flightNumber = context.params.flightnumber
     const date = context.params.date
+    let restaurantData = []
+    let hotelData = []
     const flightData = await FlightService.GetFlightFromNumber(flightNumber, date)
     if (flightData != null) {
-        var restaurantData = await MapDataService.GetRestaurantsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
+        restaurantData = await MapDataService.GetRestaurantsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
+        hotelData = await MapDataService.GetHotelsNearby(flightData[0].arrival.airport.location.lat, flightData[0].arrival.airport.location.lon)
     }
     return {
-        props: { flightData: flightData, restaurantData: restaurantData },
+        props: { flightData: flightData, restaurantData: restaurantData, hotelData: hotelData },
     }
 }
