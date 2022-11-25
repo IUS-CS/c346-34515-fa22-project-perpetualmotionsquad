@@ -20,20 +20,28 @@ public class HotelsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Hotels>> GetRestautants(string lat, string lng)
     {
+        if (!isValid(lat, lng))
+            return BadRequest();
 
+        var hotels = await _googleService.GetHotelsByLatLng(lat, lng);
+        return Ok(hotels);
+    }
+
+    private bool isValid(string lat, string lng)
+    {
         double la, lg;
         bool isLaValid = Double.TryParse(lat, out la);
         bool isLgValid = Double.TryParse(lng, out lg);
         if (!(isLaValid && isLgValid))
-            return BadRequest();
+            return false;
         
         if (la < -90 || la > 90)
-            return BadRequest();
+            return false;
 
         if (lg < -180 || lg > 180)
-            return BadRequest();
+            return false; 
 
-        var hotels = await _googleService.GetHotelsByLatLng(lat, lng);
-        return hotels;
+        return true;
     }
+
 }
