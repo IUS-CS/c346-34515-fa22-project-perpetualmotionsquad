@@ -1,9 +1,7 @@
 using Interfaces.FlightService;
 using Services.FlightService;
-using Interfaces.RestautantService;
-using Services.Restautant;
-using Interfaces.HotelService;
-using Services.Hotel;
+using Interfaces.GoogleService;
+using Services.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +13,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 
 builder.Services.AddScoped<IFlightService, FlightService>();
-builder.Services.AddScoped<IRestautantService, RestautantService>();
-builder.Services.AddScoped<IHotelService, HotelService>();
+builder.Services.AddScoped<IGoogleService, GoogleService>();
 
 
 var app = builder.Build();

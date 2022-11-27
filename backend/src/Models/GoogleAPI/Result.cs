@@ -1,7 +1,7 @@
-namespace FlightApi.Models.Restaurants;
 using System.Text.Json.Serialization;
 
 
+namespace FlightApi.Models.GoogleAPI;
 public class Result  
 {
         [JsonPropertyName("business_status")]

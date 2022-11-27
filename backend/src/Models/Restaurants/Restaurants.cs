@@ -1,7 +1,7 @@
-namespace FlightApi.Models.Restaurants;
+namespace FlightApi.Models.GoogleAPI;
 using System.Text.Json.Serialization;
 
-public class Restautants
+public class Restaurants
 {
     [JsonPropertyName("results")]
     public List<Result>? Results {get; set;}

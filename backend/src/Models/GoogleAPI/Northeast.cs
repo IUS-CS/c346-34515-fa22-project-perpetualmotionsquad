@@ -1,6 +1,6 @@
-namespace FlightApi.Models.Restaurants;
 using System.Text.Json.Serialization;
 
+namespace FlightApi.Models.GoogleAPI;
 public class Northeast
 {
     [JsonPropertyName("lat")]
