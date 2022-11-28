@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import {expect, jest, test} from '@jest/globals';
 import Home from "../../pages/index"
 
+//test home page
 test('Home page title contains correct title', () => {
   render(<Home />);
   const element = screen.getByTestId('homeTitle')
