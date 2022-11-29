@@ -66,10 +66,10 @@ public class UnitTest2
         controller = new RestautantsController(googleServiceMock.Object);
 
         // Act 
-        var result = controller.GetRestaurants("546", "");
+        var result = controller.GetRestaurants("33.3", "44.3");
 
         // Assert
-        googleServiceMock.Verify(f => f.GetRestautantsByLatLng(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        googleServiceMock.Verify(f => f.GetRestautantsByLatLng(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
     }
 
     [Fact]
@@ -81,9 +81,9 @@ public class UnitTest2
         controller = new RestautantsController(googleServiceMock.Object);
 
         // Act 
-        var result = controller.GetRestaurants("546", "");
+        var result = controller.GetRestaurants("22", "33");
 
         // Assert
-        googleServiceMock.Verify(f => f.GetRestautantsByLatLng(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        googleServiceMock.Verify(f => f.GetRestautantsByLatLng(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
     }
 }
