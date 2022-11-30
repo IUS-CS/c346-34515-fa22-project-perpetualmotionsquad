@@ -6,7 +6,7 @@
 
 ```console
 AeroDataBox API Key:
-1fd3e1e09dmshe740070ca36d16ep1783c1jsn49928882bacb
+Your Api Key
 ```
 ![AeroBox API](./images/AeroBoxAPILocation.png)
 
@@ -15,7 +15,7 @@ AeroDataBox API Key:
 
 ```console
 Google API Key:
-AIzaSyA_MObDESqV7TzAqOfvsOLiXQPLJEajWZc
+Your Api Key
 ```
 ![Google API](./images/GoogleAPI.png)
 
