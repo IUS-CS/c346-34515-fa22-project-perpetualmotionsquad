@@ -15,10 +15,10 @@ public class RestautantsController : ControllerBase
 
     // GET: Restautants/location?lat=1234&lng=1234
     [HttpGet("location")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Restaurants))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Place))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Restaurants>> GetRestaurants(string lat, string lng)
+    public async Task<ActionResult<Place>> GetRestaurants(string lat, string lng)
     {
         if (!isValid(lat, lng))
             return BadRequest();
